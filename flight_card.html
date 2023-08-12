@@ -3,6 +3,14 @@
     <head>
         <meta charset="UTF-8" />
         <title>Notion Flight Card</title>
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto+Mono"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+        />
         <style>
             * {
                 box-sizing: border-box;
@@ -75,9 +83,10 @@
                     <div
                         id="flight-number"
                         style="
-                            font-size: 16px;
+                            font-family: Roboto Mono, monospace;
+                            font-size: 15px;
                             color: #fcaf1f;
-                            font-weight: 800;
+                            font-weight: 600;
                             text-align: center;
                             transform: translateY(-1px);
                         "
@@ -175,17 +184,18 @@
                             margin-top: 24px;
                             justify-content: space-between;
                             width: 100%;
+                            font-family: 'M PLUS Rounded 1c';
                         "
                     >
                         <div class="vflex" style="align-items: flex-start">
-                            <span
+                            <div
                                 id="departure-time-1"
                                 style="
                                     font-weight: 700;
-                                    font-size: 30px;
+                                    font-size: 24px;
                                     color: var(--primary-text-color);
                                 "
-                            ></span>
+                            ></div>
                             <span
                                 id="departure-time-0"
                                 style="
@@ -200,7 +210,7 @@
                                 id="arrival-time-1"
                                 style="
                                     font-weight: 700;
-                                    font-size: 30px;
+                                    font-size: 24px;
                                     color: var(--primary-text-color);
                                 "
                             ></span>
