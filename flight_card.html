@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" class="stretch">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Notion Flight Card</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+
+            .stretch {
+                width: 100%;
+                height: 100%;
+            }
+            .vflex {
+                display: flex;
+                flex-direction: column;
+            }
+            .hflex {
+                display: flex;
+                flex-direction: row;
+            }
+            .location {
+                font-size: 30px;
+                font-weight: 700;
+            }
+
+            :root {
+                --main-background-color: white;
+                --primary-text-color: #1a1d23;
+                --secondary-text-color: #3c3c4399;
+                --tertiary-text-color: #3c3c434d;
+            }
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --main-background-color: #1c1c1e;
+                    --primary-text-color: white;
+                    --secondary-text-color: #ebebf599;
+                    --tertiary-text-color: #ebebf54d;
+                }
+            }
+        </style>
+    </head>
+    <body class="stretch">
+        <div class="stretch" style="padding: 20px">
+            <div
+                class="vflex"
+                style="
+                    background-color: var(--main-background-color);
+                    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.24);
+                    border-radius: 32px;
+                    align-items: flex-start;
+                    gap: 10px;
+                    padding: 16px;
+                "
+            >
+                <div
+                    style="
+                        padding-left: 12px;
+                        padding-right: 12px;
+                        background-color: #fcaf1f2c;
+                        border-radius: 9999px;
+                        height: 32px;
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 2px;
+                    "
+                >
+                    <div
+                        id="flight-number"
+                        style="
+                            font-size: 16px;
+                            color: #fcaf1f;
+                            font-weight: 800;
+                            text-align: center;
+                            transform: translateY(-1px);
+                        "
+                    ></div>
+                </div>
+                <div class="vflex" style="width: 100%; padding: 8px">
+                    <div
+                        class="hflex"
+                        style="width: 100%; align-items: center; gap: 16px"
+                    >
+                        <span
+                            id="from"
+                            class="location"
+                            style="color: #656eea"
+                        ></span>
+                        <div
+                            class="hflex"
+                            style="flex: 1; align-items: center; gap: 10px"
+                        >
+                            <location-indicator
+                                color="#656eea"
+                            ></location-indicator>
+                            <dotted-line
+                                color="#7F87AB40"
+                                style="flex: 1"
+                            ></dotted-line>
+                            <svg
+                                fill="#7F87AB"
+                                height="32px"
+                                width="32px"
+                                version="1.1"
+                                viewBox="0 0 32 32"
+                            >
+                                <path
+                                    d="M30.8,14.2C30.1,13.4,29,13,28,13H8.5L4.8,8.4C4.6,8.1,4.3,8,4,8H1C0.7,8,0.4,8.1,0.2,8.4C0,8.6,0,9,0,9.3l3,11
+	C3.2,20.7,3.6,21,4,21h6.4l-3.3,6.6c-0.2,0.3-0.1,0.7,0,1C7.3,28.8,7.7,29,8,29h4c0.3,0,0.6-0.1,0.7-0.3l6.9-7.7H28
+	c1.1,0,2.1-0.4,2.8-1.2c0.8-0.8,1.2-1.8,1.2-2.8S31.6,14.9,30.8,14.2z"
+                                />
+                                <path
+                                    d="M10.4,11h8.5l-5.1-5.7C13.6,5.1,13.3,5,13,5H9C8.7,5,8.3,5.2,8.1,5.5C8,5.8,8,6.1,8.1,6.4L10.4,11z"
+                                />
+                            </svg>
+                            <dotted-line
+                                color="#7F87AB40"
+                                style="flex: 1"
+                            ></dotted-line>
+                            <location-indicator
+                                color="#fb9057"
+                            ></location-indicator>
+                        </div>
+                        <span
+                            id="to"
+                            class="location"
+                            style="color: #fb9057"
+                        ></span>
+                    </div>
+                    <div style="position: relative; width: 100%">
+                        <div
+                            class="hflex"
+                            style="
+                                width: 100%;
+                                justify-content: space-between;
+                                align-items: center;
+                                top: 0;
+                                left: 0;
+                            "
+                        >
+                            <span
+                                id="from-airport"
+                                style="color: #a5a9d6a0"
+                            ></span>
+                            <span
+                                id="to-airport"
+                                style="color: #f6cbb4ab"
+                            ></span>
+                        </div>
+                        <span
+                            id="flight-time"
+                            style="
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                color: var(--primary-text-color);
+                                font-weight: 600;
+                                font-size: 18px;
+                                text-align: center;
+                            "
+                        >
+                        </span>
+                    </div>
+                    <div
+                        class="hflex"
+                        style="
+                            margin-top: 24px;
+                            justify-content: space-between;
+                            width: 100%;
+                        "
+                    >
+                        <div class="vflex" style="align-items: flex-start">
+                            <span
+                                id="departure-time-1"
+                                style="
+                                    font-weight: 700;
+                                    font-size: 30px;
+                                    color: var(--primary-text-color);
+                                "
+                            ></span>
+                            <span
+                                id="departure-time-0"
+                                style="
+                                    font-weight: 600;
+                                    font-size: 18px;
+                                    color: var(--secondary-text-color);
+                                "
+                            ></span>
+                        </div>
+                        <div class="vflex" style="align-items: flex-end">
+                            <span
+                                id="arrival-time-1"
+                                style="
+                                    font-weight: 700;
+                                    font-size: 30px;
+                                    color: var(--primary-text-color);
+                                "
+                            ></span>
+                            <span
+                                id="arrival-time-0"
+                                style="
+                                    font-weight: 600;
+                                    font-size: 18px;
+                                    color: var(--secondary-text-color);
+                                "
+                            ></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            class LocationIndicator extends HTMLElement {
+                constructor() {
+                    super();
+                    const color = this.getAttribute("color");
+                    this.innerHTML = `
+                    <div
+                        style="
+                            position: relative;
+                            background-color: ${color}43;
+                            border-radius: 50%;
+                            width: 20px;
+                            height: 20px;
+                        "
+                    >
+                        <div
+                            style="
+                                position: absolute;
+                                top: 4px;
+                                left: 4px;
+                                width: 12px;
+                                height: 12px;
+                                background-color: ${color};
+                                border-radius: 50%;
+                            "
+                        ></div>
+                    </div>
+                    `;
+                }
+            }
+            customElements.define("location-indicator", LocationIndicator);
+
+            class DottedLine extends HTMLElement {
+                constructor() {
+                    super();
+                    const color = this.getAttribute("color");
+                    this.innerHTML = `
+                    <div
+                        style="
+                            height: 10px;
+                            border-style: dotted none none none;
+                            border-width: 5px;
+                            transform: translateY(2.5px);
+                            border-color: ${color};
+                        "
+                    ></div>
+                    `;
+                }
+            }
+            customElements.define("dotted-line", DottedLine);
+        </script>
+        <script>
+            const query = window.location.search;
+            const urlParams = new URLSearchParams(query);
+
+            const flightNumber = urlParams.get("flightNumber");
+            document.getElementById("flight-number").innerText = flightNumber;
+
+            const from = urlParams.get("from");
+            const to = urlParams.get("to");
+            document.getElementById("from").innerText = from;
+            document.getElementById("to").innerText = to;
+
+            const fromAirport = urlParams.get("fromAirport");
+            const toAirport = urlParams.get("toAirport");
+            document.getElementById("from-airport").innerText = fromAirport;
+            document.getElementById("to-airport").innerText = toAirport;
+
+            const departureTime = urlParams.get("departureTime");
+            const arrivalTime = urlParams.get("arrivalTime");
+            // Parse the string into a time format according to YYYY/MM/dd HH:mm.
+            const departureDate = new Date(departureTime);
+            const arrivalDate = new Date(arrivalTime);
+            document.getElementById("departure-time-1").innerText =
+                departureDate.toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                });
+            document.getElementById("departure-time-0").innerText =
+                departureDate.toLocaleDateString([], {
+                    year: "numeric",
+                    weekday: "short",
+                    month: "short",
+                    day: "numeric",
+                });
+            document.getElementById("arrival-time-1").innerText =
+                arrivalDate.toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                });
+            document.getElementById("arrival-time-0").innerText =
+                arrivalDate.toLocaleDateString([], {
+                    year: "numeric",
+                    weekday: "short",
+                    month: "short",
+                    day: "numeric",
+                });
+            // Calculate flight time.
+            const flightTime = arrivalDate - departureDate;
+            // Convert to hours and minutes.
+            const flightHours = Math.floor(flightTime / 1000 / 60 / 60);
+            const flightMinutes = Math.floor(
+                (flightTime / 1000 / 60 / 60 - flightHours) * 60
+            );
+            document.getElementById("flight-time").innerText =
+                flightHours + "H " + flightMinutes + "M";
+        </script>
+    </body>
+</html>
