@@ -114,19 +114,23 @@
                                 style="flex: 1"
                             ></dotted-line>
                             <svg
+                                id="plane"
+                                viewBox="0 0 576 512"
+                                style="width: 24px; height: 24px"
                                 fill="#7F87AB"
-                                height="32px"
-                                width="32px"
-                                version="1.1"
-                                viewBox="0 0 32 32"
                             >
                                 <path
-                                    d="M30.8,14.2C30.1,13.4,29,13,28,13H8.5L4.8,8.4C4.6,8.1,4.3,8,4,8H1C0.7,8,0.4,8.1,0.2,8.4C0,8.6,0,9,0,9.3l3,11
-	C3.2,20.7,3.6,21,4,21h6.4l-3.3,6.6c-0.2,0.3-0.1,0.7,0,1C7.3,28.8,7.7,29,8,29h4c0.3,0,0.6-0.1,0.7-0.3l6.9-7.7H28
-	c1.1,0,2.1-0.4,2.8-1.2c0.8-0.8,1.2-1.8,1.2-2.8S31.6,14.9,30.8,14.2z"
+                                    d="M482.3 192c34.2 0 93.7 29 93.7 64c0 36-59.5 64-93.7 64l-116.6 0L265.2 495.9c-5.7 10-16.3 16.1-27.8 16.1l-56.2 0c-10.6 0-18.3-10.2-15.4-20.4l49-171.6L112 320 68.8 377.6c-3 4-7.8 6.4-12.8 6.4l-42 0c-7.8 0-14-6.3-14-14c0-1.3 .2-2.6 .5-3.9L32 256 .5 145.9c-.4-1.3-.5-2.6-.5-3.9c0-7.8 6.3-14 14-14l42 0c5 0 9.8 2.4 12.8 6.4L112 192l102.9 0-49-171.6C162.9 10.2 170.6 0 181.2 0l56.2 0c11.5 0 22.1 6.2 27.8 16.1L365.7 192l116.6 0z"
                                 />
+                            </svg>
+                            <svg
+                                id="train"
+                                viewBox="0 0 448 512"
+                                style="width: 24px; height: 24px"
+                                fill="#7F87AB"
+                            >
                                 <path
-                                    d="M10.4,11h8.5l-5.1-5.7C13.6,5.1,13.3,5,13,5H9C8.7,5,8.3,5.2,8.1,5.5C8,5.8,8,6.1,8.1,6.4L10.4,11z"
+                                    d="M96 0C43 0 0 43 0 96L0 352c0 48 35.2 87.7 81.1 94.9l-46 46C28.1 499.9 33.1 512 43 512l39.7 0c8.5 0 16.6-3.4 22.6-9.4L160 448l128 0 54.6 54.6c6 6 14.1 9.4 22.6 9.4l39.7 0c10 0 15-12.1 7.9-19.1l-46-46c46-7.1 81.1-46.9 81.1-94.9l0-256c0-53-43-96-96-96L96 0zM64 96c0-17.7 14.3-32 32-32l256 0c17.7 0 32 14.3 32 32l0 96c0 17.7-14.3 32-32 32L96 224c-17.7 0-32-14.3-32-32l0-96zM224 288a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
                                 />
                             </svg>
                             <dotted-line
@@ -288,6 +292,18 @@
         <script>
             const query = window.location.search;
             const urlParams = new URLSearchParams(query);
+
+            const type = +urlParams.get("type") ?? 0;
+            switch (type) {
+                case 1:
+                    document.getElementById("plane").style.display = "none";
+                    document.getElementById("train").style.display = "block";
+                    break;
+                default:
+                    document.getElementById("plane").style.display = "block";
+                    document.getElementById("train").style.display = "none";
+                    break;
+            }
 
             const flightNumber = urlParams.get("flightNumber");
             document.getElementById("flight-number").innerText = flightNumber;
